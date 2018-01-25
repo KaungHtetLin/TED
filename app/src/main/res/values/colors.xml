@@ -12,4 +12,6 @@
     <color name="pure_white">#fff</color>
     <color name="pure_dark">#000</color>
     <color name="light_yellow">#f3c864</color>
+
+    <color name="image_foreground">#41000000</color>
 </resources>

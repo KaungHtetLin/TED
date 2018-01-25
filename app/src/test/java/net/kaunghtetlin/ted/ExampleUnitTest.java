@@ -1,4 +1,4 @@
-package net.kaunghtetlin.tedtalks;
+package net.kaunghtetlin.ted;
 
 import org.junit.Test;
 

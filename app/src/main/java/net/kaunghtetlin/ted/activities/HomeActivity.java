@@ -1,4 +1,4 @@
-package net.kaunghtetlin.tedtalks.activities;
+package net.kaunghtetlin.ted.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,7 +9,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import net.kaunghtetlin.tedtalks.R;
+import net.kaunghtetlin.ted.R;
+import net.kaunghtetlin.ted.fragments.TedPagerFragment;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -28,6 +29,7 @@ public class HomeActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        navigateToTabLayout();
     }
 
     @Override
@@ -50,5 +52,11 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void navigateToTabLayout() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fl_container, TedPagerFragment.newInstance())
+                .commit();
     }
 }
