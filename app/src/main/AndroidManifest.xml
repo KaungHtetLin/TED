@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="net.kaunghtetlin.ted">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name="net.kaunghtetlin.ted.TEDApp"
         android:allowBackup="true"

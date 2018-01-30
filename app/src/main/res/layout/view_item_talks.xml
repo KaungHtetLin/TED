@@ -30,7 +30,6 @@
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/tv_talks_title"
                 android:layout_alignParentStart="true"
-                android:foreground="@color/image_foreground"
                 android:paddingLeft="@dimen/margin_medium_2"
                 android:text="Wendy Woods"
                 android:textColor="@color/pure_white"
@@ -53,14 +52,14 @@
                 android:id="@+id/iv_talks_more"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/tv_time"
+                android:layout_above="@+id/tv_talks_time"
                 android:layout_alignParentEnd="true"
                 android:paddingRight="@dimen/margin_medium"
                 android:layout_marginBottom="@dimen/margin_medium"
                 android:src="@drawable/ic_more_vert_24dp" />
 
             <TextView
-                android:id="@+id/tv_time"
+                android:id="@+id/tv_talks_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"

@@ -1,5 +1,6 @@
 package net.kaunghtetlin.ted.activities;
 
+
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 
 import net.kaunghtetlin.ted.R;
 import net.kaunghtetlin.ted.fragments.TedPagerFragment;
+
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -29,7 +31,8 @@ public class HomeActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        navigateToTabLayout();
+
+                navigateToTabLayout();
     }
 
     @Override

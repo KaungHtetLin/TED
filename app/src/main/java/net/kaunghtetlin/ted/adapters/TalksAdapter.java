@@ -23,14 +23,4 @@ public class TalksAdapter extends BaseRecyclerAdapter<TalksViewHolder,TalksVO> {
         View talksScreenView = mLayoutInflator.inflate(R.layout.view_item_talks, parent, false);
         return new TalksViewHolder(talksScreenView);
     }
-
-    @Override
-    public void onBindViewHolder(TalksViewHolder holder, int position) {
-//        super.onBindViewHolder(holder, position);
-    }
-
-    @Override
-    public int getItemCount() {
-        return 16;
-    }
 }

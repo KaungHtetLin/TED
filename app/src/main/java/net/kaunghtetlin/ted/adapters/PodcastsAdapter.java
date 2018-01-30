@@ -24,14 +24,4 @@ public class PodcastsAdapter extends BaseRecyclerAdapter<PodcastsViewHolder,Podc
         View podcastsScreenView = mLayoutInflator.inflate(R.layout.view_items_podcasts, parent, false);
         return new PodcastsViewHolder(podcastsScreenView);
     }
-
-    @Override
-    public void onBindViewHolder(PodcastsViewHolder holder, int position) {
-        //super.onBindViewHolder(holder, position);
-    }
-
-    @Override
-    public int getItemCount() {
-        return 16;
-    }
 }

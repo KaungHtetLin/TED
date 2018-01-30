@@ -1,5 +1,8 @@
 package net.kaunghtetlin.ted.fragments;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +15,12 @@ import net.kaunghtetlin.ted.R;
 import net.kaunghtetlin.ted.adapters.TalksAdapter;
 import net.kaunghtetlin.ted.components.EmptyViewPod;
 import net.kaunghtetlin.ted.components.SmartRecyclerView;
+import net.kaunghtetlin.ted.data.models.TalksModel;
+import net.kaunghtetlin.ted.data.vos.TalksVO;
+import net.kaunghtetlin.ted.mvp.presenters.TalksPresenter;
+import net.kaunghtetlin.ted.mvp.views.TalksView;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,7 +29,7 @@ import butterknife.ButterKnife;
  * Created by Kaung Htet Lin on 1/24/2018.
  */
 
-public class TalksFragment extends Fragment {
+public class TalksFragment extends Fragment implements TalksView{
 
     @BindView(R.id.rv_talks)
     SmartRecyclerView rvTalks;
@@ -29,6 +38,8 @@ public class TalksFragment extends Fragment {
     EmptyViewPod vpEmptyTalks;
 
     TalksAdapter mTalksAdapter;
+    TalksModel mTalksModel;
+    TalksPresenter mTalksPresenter;
 
     public static TalksFragment newInstance() {
         TalksFragment fragment = new TalksFragment();
@@ -40,6 +51,8 @@ public class TalksFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_talks, container, false);
         ButterKnife.bind(this, view);
+        mTalksPresenter=new TalksPresenter();
+        mTalksPresenter.onCreate(this);
 
         rvTalks.setEmptyView(vpEmptyTalks);
         rvTalks.setLayoutManager(new LinearLayoutManager(getContext(),
@@ -47,6 +60,16 @@ public class TalksFragment extends Fragment {
 
         mTalksAdapter = new TalksAdapter(getContext());
         rvTalks.setAdapter(mTalksAdapter);
+
+        mTalksModel = ViewModelProviders.of(this).get(TalksModel.class);
+        mTalksModel.initDatabase(container.getContext());
+        mTalksModel.getTalks().observe(this, new Observer<List<TalksVO>>() {
+            @Override
+            public void onChanged(@Nullable List<TalksVO> talksVOs) {
+                mTalksAdapter.setNewData(talksVOs);
+            }
+        });
+
 /*
 
         mSmartScrollListener = new SmartScrollListener(new SmartScrollListener.OnSmartScrollListener() {
@@ -55,7 +78,7 @@ public class TalksFragment extends Fragment {
                 Snackbar.make(rvTalks, "Loading News Data.", Snackbar.LENGTH_LONG).show();
                 swipeRefreshLayout.setRefreshing(true);
 //                MovieModel.getObjInstance().loadMoreMovies(getContext());
-                mPresenter.onMovieListEndReach(getContext());
+                mPlaylistsPresenter.onMovieListEndReach(getContext());
             }
         });
 
@@ -63,7 +86,7 @@ public class TalksFragment extends Fragment {
             @Override
             public void onRefresh() {
 //                MovieModel.getObjInstance().forceRefresMovie(getContext());
-                mPresenter.onForceRefresh(getContext());
+                mPlaylistsPresenter.onForceRefresh(getContext());
             }
         });
 
@@ -77,5 +100,47 @@ public class TalksFragment extends Fragment {
         rvNews.setAdapter(newsAdapter);
 */
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+//        mTalksPresenter = new TalksPresenter();
+        mTalksPresenter.onStart();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mTalksPresenter.onStop();
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mTalksPresenter.onDestroy();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mTalksPresenter.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mTalksPresenter.onResume();
+    }
+
+    @Override
+    public void displayTalksLists(List<TalksVO> talksVOS) {
+
     }
 }

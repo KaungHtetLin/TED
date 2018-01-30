@@ -2,15 +2,15 @@ package net.kaunghtetlin.ted.network.responses;
 
 import com.google.gson.annotations.SerializedName;
 
-import net.kaunghtetlin.ted.data.vos.TalksVO;
+import net.kaunghtetlin.ted.data.vos.PodcastsVO;
 
 import java.util.List;
 
 /**
- * Created by Kaung Htet Lin on 1/25/2018.
+ * Created by Kaung Htet Lin on 1/26/2018.
  */
 
-public class TalksResponse {
+public class PodcastsResponse {
 
     @SerializedName("code")
     private int code;
@@ -22,10 +22,10 @@ public class TalksResponse {
     private String apiVersion;
 
     @SerializedName("page")
-    private int page;
+    private String pageNo;
 
-    @SerializedName("ted_talks")
-    private List<TalksVO> talksList;
+    @SerializedName("ted_podcasts")
+    private List<PodcastsVO> podcastsLists;
 
     public int getCode() {
         return code;
@@ -39,11 +39,11 @@ public class TalksResponse {
         return apiVersion;
     }
 
-    public int getPage() {
-        return page;
+    public String getPageNo() {
+        return pageNo;
     }
 
-    public List<TalksVO> getTalksList() {
-        return talksList;
+    public List<PodcastsVO> getPodcastsLists() {
+        return podcastsLists;
     }
 }

@@ -24,14 +24,4 @@ public class PlaylistsAdapter extends BaseRecyclerAdapter<PlaylistsViewHolder,Pl
         View playlistsScreenView = mLayoutInflator.inflate(R.layout.view_item_playlists, parent, false);
         return new PlaylistsViewHolder(playlistsScreenView);
     }
-
-    @Override
-    public void onBindViewHolder(PlaylistsViewHolder holder, int position) {
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return 16;
-    }
 }

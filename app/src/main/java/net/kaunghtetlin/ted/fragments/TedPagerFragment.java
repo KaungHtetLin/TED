@@ -41,14 +41,16 @@ public class TedPagerFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_pager_ted, container, false);
 
-        TabLayout t1Ted=rootView.findViewById(R.id.tl_ted);
+        TabLayout tlTed=rootView.findViewById(R.id.tl_ted);
         ViewPager pagerTed=rootView.findViewById(R.id.pager_ted);
 
         pagerTed.setAdapter(mTEDPagerAdapter);
         pagerTed.setOffscreenPageLimit(mTEDPagerAdapter.getCount());
+
 //        pagerTed.setOff
 
-        t1Ted.setupWithViewPager(pagerTed);
+        tlTed.setupWithViewPager(pagerTed);
+//        tlTed.getTabAt()
 
         return rootView;
     }
